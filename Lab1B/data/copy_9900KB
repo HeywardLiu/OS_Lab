@@ -1,0 +1,44 @@
+usertest0511330@ubuntu:~/Desktop/Profiling tests/fileCopyTest$ sudo perf trace ./fileCopyTest originalFile.txt copiedFile.txt
+         ? (         ): fileCopyTest/41636  ... [continued]: execve()) = 0
+     0.075 ( 0.006 ms): fileCopyTest/41636 brk(                                                                  ) = 0xb0a000
+     0.110 ( 0.011 ms): fileCopyTest/41636 access(filename: 0x7ab20d24                                           ) = -1 ENOENT No such file or directory
+     0.131 ( 0.008 ms): fileCopyTest/41636 access(filename: 0x7ab234e0, mode: R                                  ) = -1 ENOENT No such file or directory
+     0.146 ( 0.010 ms): fileCopyTest/41636 open(filename: 0x7ab211d1, flags: CLOEXEC                             ) = 3
+     0.160 ( 0.006 ms): fileCopyTest/41636 fstat(fd: 3, statbuf: 0x7ffe13d3a630                                  ) = 0
+     0.169 ( 0.009 ms): fileCopyTest/41636 mmap(len: 89313, prot: READ, flags: PRIVATE, fd: 3                    ) = 0x7f057ad10000
+     0.182 ( 0.004 ms): fileCopyTest/41636 close(fd: 3                                                           ) = 0
+     0.197 ( 0.005 ms): fileCopyTest/41636 access(filename: 0x7ab20d24                                           ) = -1 ENOENT No such file or directory
+     0.212 ( 0.008 ms): fileCopyTest/41636 open(filename: 0x7ad28d60, flags: CLOEXEC                             ) = 3
+     0.224 ( 0.006 ms): fileCopyTest/41636 read(fd: 3, buf: 0x7ffe13d3a7e8, count: 832                           ) = 832
+     0.235 ( 0.004 ms): fileCopyTest/41636 fstat(fd: 3, statbuf: 0x7ffe13d3a680                                  ) = 0
+     0.242 ( 0.006 ms): fileCopyTest/41636 mmap(len: 4096, prot: READ|WRITE, flags: PRIVATE|ANONYMOUS            ) = 0x7f057ad0f000
+     0.257 ( 0.012 ms): fileCopyTest/41636 mmap(len: 3971488, prot: EXEC|READ, flags: PRIVATE|DENYWRITE, fd: 3   ) = 0x7f057a737000
+     0.273 ( 0.016 ms): fileCopyTest/41636 mprotect(start: 0x7f057a8f7000, len: 2097152                          ) = 0
+     0.293 ( 0.012 ms): fileCopyTest/41636 mmap(addr: 0x7f057aaf7000, len: 24576, prot: READ|WRITE, flags: PRIVATE|DENYWRITE|FIXED, fd: 3, off: 1835008) = 0x7f057aaf7000
+     0.314 ( 0.007 ms): fileCopyTest/41636 mmap(addr: 0x7f057aafd000, len: 14752, prot: READ|WRITE, flags: PRIVATE|ANONYMOUS|FIXED) = 0x7f057aafd000
+     0.334 ( 0.005 ms): fileCopyTest/41636 close(fd: 3                                                           ) = 0
+     0.357 ( 0.007 ms): fileCopyTest/41636 mmap(len: 4096, prot: READ|WRITE, flags: PRIVATE|ANONYMOUS            ) = 0x7f057ad0e000
+     0.371 ( 0.005 ms): fileCopyTest/41636 mmap(len: 4096, prot: READ|WRITE, flags: PRIVATE|ANONYMOUS            ) = 0x7f057ad0d000
+     0.382 ( 0.004 ms): fileCopyTest/41636 arch_prctl(option: 4098, arg2: 139661512075008                        ) = 0
+     0.476 ( 0.012 ms): fileCopyTest/41636 mprotect(start: 0x7f057aaf7000, len: 16384, prot: READ                ) = 0
+     0.494 ( 0.010 ms): fileCopyTest/41636 mprotect(start: 0x600000, len: 4096, prot: READ                       ) = 0
+     0.511 ( 0.012 ms): fileCopyTest/41636 mprotect(start: 0x7f057ad26000, len: 4096, prot: READ                 ) = 0
+     0.528 ( 0.017 ms): fileCopyTest/41636 munmap(addr: 0x7f057ad10000, len: 89313                               ) = 0
+     0.599 ( 0.213 ms): fileCopyTest/41636 clone(clone_flags: CHILD_CLEARTID|CHILD_SETTID|0x11, child_tidptr: 0x7f057ad0e9d0) = 41637 (fileCopyTest)
+     0.841 ( 0.012 ms): fileCopyTest/41636 open(filename: 0x13d3b835                                             ) = 3
+     0.857 ( 1.145 ms): fileCopyTest/41636 open(filename: 0x13d3b846, flags: RDWR|CREAT|TRUNC, mode: IRUGO|ISGID|ISVTX|IXUSR|IWGRP|IWOTH|IXOTH) = 4
+     2.008 ( 0.003 ms): fileCopyTest/41636 fstat(fd: 3, statbuf: 0x7ffe13d3ae90                                  ) = 0
+     2.013 ( 0.002 ms): fileCopyTest/41636 lseek(fd: 4, offset: 9947000, whence: SET                             ) = 9947000
+     2.017 ( 0.013 ms): fileCopyTest/41636 write(fd: 4, buf: 0x400b77, count: 1                                  ) = 1
+     2.032 ( 0.007 ms): fileCopyTest/41636 mmap(len: 9947001, prot: READ, flags: SHARED, fd: 3                   ) = 0x7f0579dba000
+     2.040 ( 0.003 ms): fileCopyTest/41636 mmap(len: 9947001, prot: READ|WRITE, flags: SHARED, fd: 4             ) = 0x7f057943d000
+         ? (         ): fileCopyTest/41637  ... [continued]: clone()
+     2.812 ( 0.011 ms): fileCopyTest/41637 open(filename: 0x13d3b835                                             ) = 3
+     2.847 ( 0.898 ms): fileCopyTest/41637 open(filename: 0x13d3b846, flags: RDWR|CREAT|TRUNC, mode: IRUGO|ISGID|ISVTX|IXUSR|IWGRP|IWOTH|IXOTH) = 4
+     3.765 ( 0.003 ms): fileCopyTest/41637 fstat(fd: 3, statbuf: 0x7ffe13d3ae90                                  ) = 0
+     3.775 ( 0.002 ms): fileCopyTest/41637 lseek(fd: 4, offset: 9947000, whence: SET                             ) = 9947000
+     3.780 ( 0.013 ms): fileCopyTest/41637 write(fd: 4, buf: 0x400b77, count: 1                                  ) = 1
+     3.794 ( 0.008 ms): fileCopyTest/41637 mmap(len: 9947001, prot: READ, flags: SHARED, fd: 3                   ) = 0x7f0579dba000
+     3.804 ( 0.003 ms): fileCopyTest/41637 mmap(len: 9947001, prot: READ|WRITE, flags: SHARED, fd: 4             ) = 0x7f057943d000
+    14.086 (         ): fileCopyTest/41636 exit_group(                                                           )
+    16.665 (         ): fileCopyTest/41637 exit_group(                                                           )

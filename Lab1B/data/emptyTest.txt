@@ -1,0 +1,27 @@
+root@ubuntu:/home/usertest0511330/Desktop/Profiling tests/emptyTest# sudo perf trace ./emptyTest
+         ? (         ): emptyTest/9329  ... [continued]: execve()) = 0
+     0.034 ( 0.002 ms): emptyTest/9329 brk(                                                                  ) = 0x2014000
+     0.049 ( 0.005 ms): emptyTest/9329 access(filename: 0x8a2ad24                                            ) = -1 ENOENT No such file or directory
+     0.060 ( 0.003 ms): emptyTest/9329 access(filename: 0x8a2d4e0, mode: R                                   ) = -1 ENOENT No such file or directory
+     0.068 ( 0.004 ms): emptyTest/9329 open(filename: 0x8a2b1d1, flags: CLOEXEC                              ) = 3
+     0.073 ( 0.003 ms): emptyTest/9329 fstat(fd: 3, statbuf: 0x7fffc745afb0                                  ) = 0
+     0.077 ( 0.003 ms): emptyTest/9329 mmap(len: 89313, prot: READ, flags: PRIVATE, fd: 3                    ) = 0x7fec08c1a000
+     0.081 ( 0.001 ms): emptyTest/9329 close(fd: 3                                                           ) = 0
+     0.086 ( 0.002 ms): emptyTest/9329 access(filename: 0x8a2ad24                                            ) = -1 ENOENT No such file or directory
+     0.092 ( 0.003 ms): emptyTest/9329 open(filename: 0x8c32d60, flags: CLOEXEC                              ) = 3
+     0.096 ( 0.003 ms): emptyTest/9329 read(fd: 3, buf: 0x7fffc745b168, count: 832                           ) = 832
+     0.101 ( 0.001 ms): emptyTest/9329 fstat(fd: 3, statbuf: 0x7fffc745b000                                  ) = 0
+     0.103 ( 0.002 ms): emptyTest/9329 mmap(len: 4096, prot: READ|WRITE, flags: PRIVATE|ANONYMOUS            ) = 0x7fec08c19000
+     0.108 ( 0.005 ms): emptyTest/9329 mmap(len: 3971488, prot: EXEC|READ, flags: PRIVATE|DENYWRITE, fd: 3   ) = 0x7fec08641000
+     0.114 ( 0.008 ms): emptyTest/9329 mprotect(start: 0x7fec08801000, len: 2097152                          ) = 0
+     0.123 ( 0.004 ms): emptyTest/9329 mmap(addr: 0x7fec08a01000, len: 24576, prot: READ|WRITE, flags: PRIVATE|DENYWRITE|FIXED, fd: 3, off: 1835008) = 0x7fec08a01000
+     0.131 ( 0.002 ms): emptyTest/9329 mmap(addr: 0x7fec08a07000, len: 14752, prot: READ|WRITE, flags: PRIVATE|ANONYMOUS|FIXED) = 0x7fec08a07000
+     0.138 ( 0.002 ms): emptyTest/9329 close(fd: 3                                                           ) = 0
+     0.147 ( 0.003 ms): emptyTest/9329 mmap(len: 4096, prot: READ|WRITE, flags: PRIVATE|ANONYMOUS            ) = 0x7fec08c18000
+     0.152 ( 0.002 ms): emptyTest/9329 mmap(len: 4096, prot: READ|WRITE, flags: PRIVATE|ANONYMOUS            ) = 0x7fec08c17000
+     0.155 ( 0.002 ms): emptyTest/9329 arch_prctl(option: 4098, arg2: 140651735910144                        ) = 0
+     0.193 ( 0.004 ms): emptyTest/9329 mprotect(start: 0x7fec08a01000, len: 16384, prot: READ                ) = 0
+     0.199 ( 0.003 ms): emptyTest/9329 mprotect(start: 0x600000, len: 4096, prot: READ                       ) = 0
+     0.206 ( 0.005 ms): emptyTest/9329 mprotect(start: 0x7fec08c30000, len: 4096, prot: READ                 ) = 0
+     0.212 ( 0.006 ms): emptyTest/9329 munmap(addr: 0x7fec08c1a000, len: 89313                               ) = 0
+     0.235 (         ): emptyTest/9329 exit_group(                                                           )
